@@ -1720,6 +1720,7 @@ GameObject:
   - component: {fileID: 7945999413024791396}
   - component: {fileID: 8105658572235216601}
   - component: {fileID: 8271192986619254178}
+  - component: {fileID: 8271192986619254179}
   m_Layer: 0
   m_Name: Faucet_Handle
   m_TagString: Usable
@@ -1749,6 +1750,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6942817635960948391, guid: 2a83511a782a6aa4dafed1f5a2bd3803, type: 3}
+--- !u!114 &8271192986619254179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8271192986619254177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca0aff4430a9450b860a45cd968259e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &8327374209264648989
 MeshRenderer:
   m_ObjectHideFlags: 0
