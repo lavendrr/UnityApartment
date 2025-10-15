@@ -167,7 +167,7 @@ public class PlayerInteractions : MonoBehaviour
         if (type == InteractableType.Usable)
         {
             // Requires a receiver on the target GameObject
-            obj.SendMessage("OnUse", grabbedObject);
+            obj.SendMessage("OnUse", obj);
         }
     }
 
