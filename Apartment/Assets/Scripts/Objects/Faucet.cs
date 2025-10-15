@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Faucet : MonoBehaviour
 {
@@ -23,17 +24,15 @@ public class Faucet : MonoBehaviour
         {
             Vector3 newPosition = new Vector3(transform.position.x, restingPosition.y, restingPosition.z);
             // Pull(player.transform);
-            if (transform.position.x < restingPosition.x)
+            if (transform.position.x <= restingPosition.x)
             {
-                // transform.SetPositionAndRotation(restingPosition, transform.rotation);
                 newPosition.x = restingPosition.x;
             }
             else if (transform.position.x > restingPosition.x + 0.1)
             {
-                // transform.SetPositionAndRotation(new Vector3(restingPosition.x + 1 / 10, restingPosition.y, restingPosition.z), transform.rotation);
-                newPosition.x = restingPosition.x + 1 / 10;
+                newPosition.x = (float)(restingPosition.x + 0.1);
             }
-            Quaternion angle = Quaternion.AngleAxis((transform.position.x - restingPosition.x) * 450, new Vector3(1, 0, 0));
+            Quaternion angle = Quaternion.AngleAxis((newPosition.x - restingPosition.x) * 450, new Vector3(1, 0, 0));
             transform.SetPositionAndRotation(newPosition, angle);
         }
     }
