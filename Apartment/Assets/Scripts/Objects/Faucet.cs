@@ -6,18 +6,20 @@ public class Faucet : MonoBehaviour
 {
     private bool beingDragged = false;
     private GameObject player;
+    private Transform originalParent;
     private Vector3 ?positionDelta;
 
     void Start()
     {
         player = GameObject.Find("Player");
+        originalParent = transform.parent;
     }
 
     void Update()
     {
         if (beingDragged)
         {
-            Pull(player.transform);
+            // Pull(player.transform);
         }
     }
 
@@ -28,11 +30,13 @@ public class Faucet : MonoBehaviour
             beingDragged = false;
             Debug.Log("stopped dragging!");
             positionDelta = null;
+            transform.parent = originalParent;
         }
         else
         {
             beingDragged = true;
             Debug.Log("started dragging!");
+            transform.parent = player.transform;
         }
     }
     
