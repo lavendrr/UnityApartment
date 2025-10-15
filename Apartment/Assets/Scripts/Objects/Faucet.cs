@@ -21,15 +21,20 @@ public class Faucet : MonoBehaviour
     {
         if (beingDragged)
         {
+            Vector3 newPosition = new Vector3(transform.position.x, restingPosition.y, restingPosition.z);
             // Pull(player.transform);
             if (transform.position.x < restingPosition.x)
             {
-                transform.SetPositionAndRotation(new Vector3(restingPosition.x, transform.position.y, transform.position.z), transform.rotation);
+                // transform.SetPositionAndRotation(restingPosition, transform.rotation);
+                newPosition.x = restingPosition.x;
             }
             else if (transform.position.x > restingPosition.x + 0.1)
             {
-                transform.SetPositionAndRotation(new Vector3(restingPosition.x + 1/10, transform.position.y, transform.position.z), transform.rotation);
+                // transform.SetPositionAndRotation(new Vector3(restingPosition.x + 1 / 10, restingPosition.y, restingPosition.z), transform.rotation);
+                newPosition.x = restingPosition.x + 1 / 10;
             }
+            Quaternion angle = Quaternion.AngleAxis((transform.position.x - restingPosition.x) * 450, new Vector3(1, 0, 0));
+            transform.SetPositionAndRotation(newPosition, angle);
         }
     }
 
