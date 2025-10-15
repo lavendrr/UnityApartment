@@ -28,11 +28,12 @@ public class Faucet : MonoBehaviour
             {
                 newPosition.x = restingPosition.x;
             }
-            else if (transform.position.x > restingPosition.x + 0.1)
+            else if (transform.position.x > restingPosition.x + 0.025)
             {
-                newPosition.x = (float)(restingPosition.x + 0.1);
+                newPosition.x = (float)(restingPosition.x + 0.025);
             }
-            Quaternion angle = Quaternion.AngleAxis((newPosition.x - restingPosition.x) * 450, new Vector3(1, 0, 0));
+            Quaternion angle = Quaternion.AngleAxis((newPosition.x - restingPosition.x) * 1200, new Vector3(1, 0, 0));
+            newPosition.y += (newPosition.x - restingPosition.x) * 2f;
             transform.SetPositionAndRotation(newPosition, angle);
         }
     }
