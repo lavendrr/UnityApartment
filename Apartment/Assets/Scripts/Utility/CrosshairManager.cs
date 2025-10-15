@@ -22,6 +22,7 @@ public class CrosshairManager : MonoBehaviour
     private void UpdateCrosshair()
     {
         // Update crosshair state depending on what the player is looking at
+        // Debug.Log(PlayerInteractions.Instance.InteractionCheck());
         var (type, _) = PlayerInteractions.Instance.InteractionCheck();
         if (type == InteractableType.Grabbable)
         {
