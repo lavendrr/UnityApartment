@@ -7,12 +7,14 @@ public class Faucet : MonoBehaviour
     private bool beingDragged = false;
     private GameObject player;
     private Transform originalParent;
-    private Vector3 ?positionDelta;
+    private Vector3? positionDelta;
+    private Vector3 restingPosition;
 
     void Start()
     {
         player = GameObject.Find("Player");
         originalParent = transform.parent;
+        restingPosition = transform.position;
     }
 
     void Update()
@@ -20,6 +22,14 @@ public class Faucet : MonoBehaviour
         if (beingDragged)
         {
             // Pull(player.transform);
+            if (transform.position.x < restingPosition.x)
+            {
+                transform.SetPositionAndRotation(new Vector3(restingPosition.x, transform.position.y, transform.position.z), transform.rotation);
+            }
+            else if (transform.position.x > restingPosition.x + 0.1)
+            {
+                transform.SetPositionAndRotation(new Vector3(restingPosition.x + 1/10, transform.position.y, transform.position.z), transform.rotation);
+            }
         }
     }
 
