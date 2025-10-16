@@ -11,6 +11,8 @@ public class Faucet : MonoBehaviour
     private Vector3? positionDelta;
     private Vector3 restingPosition;
     private ParticleSystem waterVFX;
+    private ParticleSystem.MainModule vfxMain;
+    private ParticleSystem.EmissionModule vfxEmission;
 
     void Start()
     {
@@ -18,6 +20,8 @@ public class Faucet : MonoBehaviour
         originalParent = transform.parent;
         restingPosition = transform.position;
         waterVFX = GameObject.Find("WaterVFX").GetComponent<ParticleSystem>();
+        vfxMain = waterVFX.main;
+        vfxEmission = waterVFX.emission;
     }
 
     void Update()
@@ -49,8 +53,13 @@ public class Faucet : MonoBehaviour
             Quaternion angle = Quaternion.AngleAxis((newPosition.x - restingPosition.x) * 1200, new Vector3(1, 0, 0));
             Quaternion angle2 = Quaternion.AngleAxis(Mathf.Clamp(transform.parent.position.z - newPosition.z, -1f, 1f) * 45f, new Vector3(0, 0, 1));
             Quaternion angle3 = angle * angle2;
-            var emission = waterVFX.emission;
-            emission.rateOverTime = (newPosition.x - restingPosition.x) * 40000f;
+
+            vfxEmission.rateOverTime = (newPosition.x - restingPosition.x) * 40000f;
+
+            // (32,150) range within RGB (0,255) range, brought into (0,1) range for color float value
+            float colorValue = 0.59f - ((Mathf.Clamp(transform.parent.position.z - newPosition.z, -1f, 1f) + 1f) * 0.2325f + 0.125f) + 0.125f;
+            vfxMain.startColor = new Color(1f, colorValue, colorValue);
+
             newPosition.y += (newPosition.x - restingPosition.x) * 2f;
             transform.SetPositionAndRotation(newPosition, angle3);
         }
