@@ -49,6 +49,8 @@ public class Faucet : MonoBehaviour
             Quaternion angle = Quaternion.AngleAxis((newPosition.x - restingPosition.x) * 1200, new Vector3(1, 0, 0));
             Quaternion angle2 = Quaternion.AngleAxis(Mathf.Clamp(transform.parent.position.z - newPosition.z, -1f, 1f) * 45f, new Vector3(0, 0, 1));
             Quaternion angle3 = angle * angle2;
+            var emission = waterVFX.emission;
+            emission.rateOverTime = (newPosition.x - restingPosition.x) * 40000f;
             newPosition.y += (newPosition.x - restingPosition.x) * 2f;
             transform.SetPositionAndRotation(newPosition, angle3);
         }
