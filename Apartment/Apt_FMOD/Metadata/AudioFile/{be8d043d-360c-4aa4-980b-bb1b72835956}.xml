@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{be8d043d-360c-4aa4-980b-bb1b72835956}">
+		<property name="assetPath">
+			<value>Water, Plumbing, From Tap Into Metal Sink, Faster Water At End SND26723 2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.4349583333333333</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{715b7020-ac70-480a-b18c-9d182fc99de9}</destination>
+		</relationship>
+	</object>
+</objects>
